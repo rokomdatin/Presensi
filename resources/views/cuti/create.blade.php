@@ -49,7 +49,7 @@
                 @error('jenis_cuti')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
             </div>
             
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Tanggal Mulai <span class="text-red-500">*</span></label>
                     <input type="date" name="tanggal_mulai" value="{{ old('tanggal_mulai') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-biru focus:border-transparent" required>
@@ -75,7 +75,7 @@
             </div>
         </div>
         
-        <div class="flex gap-3 mt-6">
+        <div class="flex flex-col sm:flex-row gap-3 mt-6">
             <button type="submit" class="px-6 py-2 bg-brand-merah text-white rounded-lg hover:bg-brand-merah/90 transition">
                 <i class="fas fa-paper-plane mr-1"></i> Ajukan
             </button>

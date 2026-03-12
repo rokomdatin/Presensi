@@ -28,7 +28,7 @@
                 @error('file')<p class="text-red-500 text-xs mt-1">{{ $message }}</p>@enderror
             </div>
             
-            <div class="flex gap-3">
+            <div class="flex flex-col sm:flex-row gap-3">
                 <button type="submit" class="px-6 py-2 bg-brand-merah text-white rounded-lg hover:bg-brand-merah/90 transition">
                     <i class="fas fa-upload mr-1"></i> Import
                 </button>

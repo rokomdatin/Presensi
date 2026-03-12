@@ -74,7 +74,7 @@
             </div>
         </div>
         
-        <div class="flex gap-3 mt-6">
+        <div class="flex flex-col sm:flex-row gap-3 mt-6">
             <button type="submit" class="px-6 py-2 bg-brand-merah text-white rounded-lg hover:bg-brand-merah/90 transition">
                 <i class="fas fa-save mr-1"></i> Simpan
             </button>

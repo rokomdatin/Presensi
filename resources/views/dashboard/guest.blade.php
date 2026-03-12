@@ -54,7 +54,7 @@
     
     <div class="lg:col-span-2 bg-white rounded-xl shadow-sm p-6">
         <h3 class="font-semibold text-brand-biru mb-4">Informasi Pribadi</h3>
-        <div class="grid grid-cols-2 gap-4 text-sm">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
                 <p class="text-gray-500">Tempat, Tanggal Lahir</p>
                 <p class="font-medium">{{ $pegawaiPribadi->tempat_lahir ?? '-' }}, {{ $pegawaiPribadi->tanggal_lahir?->format('d M Y') ?? '-' }}</p>

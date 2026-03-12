@@ -85,19 +85,25 @@
         .fade-form {
             animation: fadeInUp 1s ease-out 0.4s both;
         }
+
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
+        }
     </style>
 </head>
 {{-- diossyaban: body --}}
 <body class="min-h-screen flex items-center justify-center relative">
-    <div class="w-full max-w-md p-8 relative z-10">
+    <div class="w-full max-w-md p-4 sm:p-6 lg:p-8 relative z-10">
         {{-- diossyaban: Header --}}
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold text-white drop-shadow-lg fade-title">PRESENSI</h1>
+            <h1 class="text-2xl sm:text-3xl font-bold text-white drop-shadow-lg fade-title">PRESENSI</h1>
             <p class="text-white drop-shadow-lg mt-2 text-sm fade-subtitle">Kementerian Koordinator Pemberdayaan Masyarakat</p>
         </div>
         
         {{-- diossyaban: Login Form --}}
-        <div class="bg-white rounded-2xl shadow-xl p-8 fade-form">
+        <div class="bg-white rounded-2xl shadow-xl p-5 sm:p-8 fade-form">
             <h2 class="text-xl font-semibold text-brand-biru mb-6">Masuk ke Akun</h2>
             
             {{-- diossyaban: Error Messages --}}
@@ -163,7 +169,7 @@
         </div>
         
         {{-- diossyaban: Footer --}}
-        <p class="text-center text-gray-500 text-sm mt-6">
+        <p class="text-center text-white/90 text-sm mt-6 drop-shadow-sm">
             &copy; {{ date('Y') }} Kementerian Koordinator Pemberdayaan Masyarakat
         </p>
     </div>

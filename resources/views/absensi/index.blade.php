@@ -3,12 +3,12 @@
 @section('title', 'Absensi')
 
 @section('content')
-<div class="flex items-center justify-between mb-6">
+<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
     <div>
         <h1 class="text-2xl font-bold text-brand-biru">Data Absensi</h1>
         <p class="text-gray-600">Kelola absensi pegawai</p>
     </div>
-    <div class="flex gap-3">
+    <div class="flex flex-wrap gap-3">
         @if(!$user->isGuest())
         <form action="{{ route('absensi.clock-in') }}" method="POST" class="inline">
             @csrf

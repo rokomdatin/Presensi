@@ -35,6 +35,11 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+
+        .main-content-bg {
+            min-width: 0;
+        }
+
         .sidebar-link.active {
             background-color: #77212f;
             color: white;
@@ -42,15 +47,38 @@
         .sidebar-link:hover:not(.active) {
             background-color: rgba(119, 33, 47, 0.1);
         }
+
+        @media (max-width: 1023px) {
+            .sidebar-mobile-open {
+                overflow: hidden;
+            }
+        }
        
     </style>
     
     @stack('styles')
 </head>
-<body class="bg-brand-krem min-h-screen">
-    <div class="flex">
+<body class="bg-brand-krem min-h-screen overflow-x-hidden">
+    <div class="flex min-h-screen">
+        <header class="lg:hidden fixed top-0 left-0 right-0 z-30 bg-brand-biru text-white px-4 py-3 shadow-md">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <img src="{{ asset('logo_pm.png') }}" alt="Logo PM" class="w-8 h-8 object-contain">
+                    <div>
+                        <p class="text-sm font-semibold leading-tight">PRESENSI</p>
+                        <p class="text-[11px] text-white/70 leading-tight">Kemenkopm</p>
+                    </div>
+                </div>
+                <button id="sidebarToggle" type="button" class="inline-flex items-center justify-center w-9 h-9 rounded-md bg-white/10 hover:bg-white/20 transition" aria-label="Buka menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <div id="sidebarBackdrop" class="hidden fixed inset-0 z-30 bg-black/40 lg:hidden"></div>
+
         <!-- Sidebar -->
-        <aside class="w-64 bg-brand-biru min-h-screen fixed left-0 top-0 z-40">
+        <aside id="mobileSidebar" class="w-64 bg-brand-biru min-h-screen fixed left-0 top-0 z-40 transform -translate-x-full transition-transform duration-300 lg:translate-x-0">
             <div class="p-4">
                 <!-- Logo -->
                 <div class="flex items-center gap-3 mb-8 pb-4 border-b border-white/20">
@@ -123,7 +151,7 @@
         </aside>
         
         <!-- Main Content -->
-        <main class="main-content-bg flex-1 ml-64 p-8">
+        <main class="main-content-bg flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8 pt-20 lg:pt-8">
             <!-- Flash Messages -->
             @if(session('success'))
             <div class="mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg flex items-center gap-2">
@@ -142,6 +170,50 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('mobileSidebar');
+        const backdrop = document.getElementById('sidebarBackdrop');
+
+        const openSidebar = () => {
+            if (!sidebar || !backdrop) return;
+            sidebar.classList.remove('-translate-x-full');
+            backdrop.classList.remove('hidden');
+            document.body.classList.add('sidebar-mobile-open');
+        };
+
+        const closeSidebar = () => {
+            if (!sidebar || !backdrop) return;
+            sidebar.classList.add('-translate-x-full');
+            backdrop.classList.add('hidden');
+            document.body.classList.remove('sidebar-mobile-open');
+        };
+
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', openSidebar);
+        }
+
+        if (backdrop) {
+            backdrop.addEventListener('click', closeSidebar);
+        }
+
+        if (sidebar) {
+            sidebar.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 1024) {
+                        closeSidebar();
+                    }
+                });
+            });
+        }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                closeSidebar();
+            }
+        });
+    </script>
     
     @stack('scripts')
 </body>

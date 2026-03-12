@@ -3,7 +3,7 @@
 @section('title', 'Manajemen User')
 
 @section('content')
-<div class="flex items-center justify-between mb-6">
+<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
     <div>
         <h1 class="text-2xl font-bold text-brand-biru">Manajemen User</h1>
         <p class="text-gray-600">Kelola akun pengguna sistem</p>
