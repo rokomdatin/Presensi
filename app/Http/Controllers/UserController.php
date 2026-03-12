@@ -10,16 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if (!auth()->user()->isAdmin()) {
-                abort(403, 'Hanya admin yang dapat mengakses halaman ini.');
-            }
-            return $next($request);
-        });
-    }
-
     public function index(Request $request)
     {
         $query = User::query();

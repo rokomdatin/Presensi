@@ -42,6 +42,7 @@
         .sidebar-link:hover:not(.active) {
             background-color: rgba(119, 33, 47, 0.1);
         }
+       
     </style>
     
     @stack('styles')
@@ -53,9 +54,7 @@
             <div class="p-4">
                 <!-- Logo -->
                 <div class="flex items-center gap-3 mb-8 pb-4 border-b border-white/20">
-                    <div class="w-10 h-10 bg-brand-merah rounded-lg flex items-center justify-center">
-                        <i class="fas fa-building-columns text-white"></i>
-                    </div>
+                    <img src="{{ asset('logo_pm.png') }}" alt="Logo PM" class="w-10 h-10 object-contain">
                     <div>
                         <h1 class="text-white font-bold text-sm leading-tight">PRESENSI</h1>
                         <p class="text-white/70 text-xs">Kemenkopm</p>
@@ -124,7 +123,7 @@
         </aside>
         
         <!-- Main Content -->
-        <main class="flex-1 ml-64 p-8">
+        <main class="main-content-bg flex-1 ml-64 p-8">
             <!-- Flash Messages -->
             @if(session('success'))
             <div class="mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg flex items-center gap-2">
